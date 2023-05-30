@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Properties;
 
-public class Base_jdbc extends Entreprise{
+public class Base_jdbc {
 
 	public Base_jdbc() {
 
@@ -88,7 +88,7 @@ public class Base_jdbc extends Entreprise{
 		System.out.println("INSERT CLIENTS");
 	}
 	public void INSERT_Sites(Entreprise e) throws Exception{
-		System.out.println("insert sites<<<<<<<<<");
+		System.out.println("insert sites");
 		Class.forName( "org.hsqldb.jdbcDriver" );
 
 		String url = "jdbc:hsqldb:file:Database"+File.separator+"GOBLIN;shutdown=true";
@@ -114,7 +114,7 @@ public class Base_jdbc extends Entreprise{
 		}
 	}
 	public void INSERT_Entrepots(Entreprise e) throws Exception{
-		System.out.println("insert entrepots<<<<<<<<<");
+		System.out.println("insert entrepots");
 		Class.forName( "org.hsqldb.jdbcDriver" );
 
 		String url = "jdbc:hsqldb:file:Database"+File.separator+"GOBLIN;shutdown=true";
@@ -130,7 +130,7 @@ public class Base_jdbc extends Entreprise{
 				 int cout_fixe=listeEntrepots.get(i).getCout_fixe();
 				 int stock=listeEntrepots.get(i).getStock();
 				String requete =
-						"INSERT INTO SITES VALUES \r\n"
+						"INSERT INTO ENTREPOTS VALUES \r\n"
 								+ "('"+id_entrepot+"','"+id_site+"',"+cout_fixe+","+stock+");"
 								;	
 
@@ -142,7 +142,7 @@ public class Base_jdbc extends Entreprise{
 	}
 	
 	public void INSERT_Routes(Entreprise e) throws Exception{
-		System.out.println("insert routes<<<<<<<<<");
+		System.out.println("insert routes");
 		Class.forName( "org.hsqldb.jdbcDriver" );
 
 		String url = "jdbc:hsqldb:file:Database"+File.separator+"GOBLIN;shutdown=true";
@@ -158,8 +158,8 @@ public class Base_jdbc extends Entreprise{
 				 int distance = 0;
 
 				String requete =
-						"INSERT INTO SITES VALUES \r\n"
-								+ "('"+dest+"','"+origine+","+distance+");"
+						"INSERT INTO ROUTES VALUES \r\n"
+								+ "("+dest+","+origine+","+distance+");"
 								;	
 
 				try ( Statement statement = connection.createStatement() ) {

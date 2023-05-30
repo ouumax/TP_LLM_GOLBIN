@@ -27,8 +27,7 @@ public class Entreprise {
 	public  List<Client> getClients() {
 		return clients;
 	}
-	
-	
+		
 	public List<Entrepot> getEntrepots() {
 		return entrepots;
 	}
@@ -191,10 +190,6 @@ public class Entreprise {
 	        	position_x = Integer.parseInt(row[1]);
 	        	position_y = Integer.parseInt(row[2]);
 	        	this.sites.add(new Site(id_site,position_x,position_y));
-//	            for (String cell : row) {
-//	                System.out.print(cell + "\t");
-//	            }
-//	            System.out.println();
 	        }
 	    }
 	    catch (Exception e) {
