@@ -13,8 +13,8 @@ import com.opencsv.bean.util.OpencsvUtils;
 
 
 public class Entreprise {
-	private List<Client> clients;
-	private List<Entrepot> entrepots;
+	private  List<Client> clients;
+	private  List<Entrepot> entrepots;
 	private List<Route> routes;
 	private List<Site> sites;
 	
@@ -24,9 +24,10 @@ public class Entreprise {
 		this.routes = new ArrayList<>();
 		this.sites = new ArrayList<>();
 	}
-	public List<Client> getClients() {
-		return this.clients;
+	public  List<Client> getClients() {
+		return clients;
 	}
+	
 	
 	public List<Entrepot> getEntrepots() {
 		return entrepots;
@@ -34,11 +35,12 @@ public class Entreprise {
 	public List<Route> getRoutes() {
 		return routes;  
 	}
-	public List<Site> getSites() {
+	public  List<Site> getSites() {
 		return sites;
 	}
 	public void CreateClient(String file)
 	{
+		System.out.println("CreateClient");
 		String nom ; 
 		String mail ; 
 		int id_site ;
@@ -67,11 +69,8 @@ public class Entreprise {
 	        	mail = row[1];
 	        	id_site = Integer.parseInt(row[2]);
 	        	this.clients.add(new Client(nom,mail,id_site));
-	            for (String cell : row) {
-	           
-	                System.out.print(cell + "\t");
-	            }
-	            System.out.println();
+
+	            //System.out.println();
 	        }
 	    }
 	    catch (Exception e) {
@@ -81,6 +80,7 @@ public class Entreprise {
 	
 	public  void CreateEntrepot(String file)
 	{
+		System.out.println("CreateEntrepot");
 		int id_entrepot ; 
 		int id_site ; 
 		int cout_fixe ;
@@ -111,11 +111,6 @@ public class Entreprise {
 	        	cout_fixe = Integer.parseInt(row[2]);
 	        	stock = Integer.parseInt(row[3]);
 	        	this.entrepots.add(new Entrepot(id_entrepot,id_site,cout_fixe,stock));
-	            for (String cell : row) {
-	           
-	                System.out.print(cell + "\t");
-	            }
-	            System.out.println();
 	        }
 	    }
 	    catch (Exception e) {
@@ -124,8 +119,10 @@ public class Entreprise {
 	}
 	public void CreateRoute(String file)
 	{
+		System.out.println("CreateRoute");
 		int origine ; 
 		int destination ;
+		int distance;
 		
 	    try {
 	        // Create an object of file reader class with CSV file as a parameter.
@@ -152,9 +149,9 @@ public class Entreprise {
 	        	this.routes.add(new Route(origine,destination));
 	            for (String cell : row) {
 	           
-	                System.out.print(cell + "\t");
+	          //      System.out.print(cell + "\t");
 	            }
-	            System.out.println();
+	           // System.out.println();
 	        }
 	    }
 	    catch (Exception e) {
@@ -164,6 +161,8 @@ public class Entreprise {
 	
 	public  void CreateSite(String file)
 	{
+		
+		System.out.println("CreateSite");
 		int id_site ; 
 		int position_x ;
 		int position_y ;

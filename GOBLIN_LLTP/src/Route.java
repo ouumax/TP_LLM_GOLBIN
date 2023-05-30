@@ -2,6 +2,7 @@
 public class Route {
 	private int origine;
 	private int destination;
+	private int distance;
 	
 	public Route(int origine, int destination) {
 		this.origine = origine;

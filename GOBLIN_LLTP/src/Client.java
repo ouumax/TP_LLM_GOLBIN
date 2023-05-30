@@ -32,5 +32,10 @@ public class Client {
 	public void setId_site(int id_site) {
 		this.id_site = id_site;
 	}
+
+	@Override
+	public String toString() {
+		return "Client [nom=" + nom + ", mail=" + mail + ", id_site=" + id_site + "]";
+	}
 	
 }
