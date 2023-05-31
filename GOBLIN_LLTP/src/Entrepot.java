@@ -1,10 +1,9 @@
-
 public class Entrepot {
 	private int id_entrepot;
 	private int id_site;
 	private int cout_fixe;
 	private int stock;
-	
+
 	public Entrepot(int id_entrepot, int id_site, int cout_fixe, int stock) {
 		this.id_entrepot = id_entrepot;
 		this.id_site = id_site;
@@ -35,7 +34,7 @@ public class Entrepot {
 	public void setCout_fixe(int cout_fixe) {
 		this.cout_fixe = cout_fixe;
 	}
-	
+
 	public int getStock() {
 		return stock;
 	}
@@ -43,6 +42,6 @@ public class Entrepot {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	
-	
+
+
 }

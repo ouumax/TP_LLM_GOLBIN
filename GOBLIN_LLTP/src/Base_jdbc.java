@@ -99,7 +99,7 @@ public class Base_jdbc {
 			List<Site> listeSites = e.getSites();
 			for (int i = 0;i<listeSites.size();i++){
 
-				int pos_x = listeSites.get(i).getPsotition_x();
+				int pos_x = listeSites.get(i).getPosition_x();
 				int pos_y = listeSites.get(i).getPosition_y();
 				int idsite=listeSites.get(i).getId_site();
 				String requete =

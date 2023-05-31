@@ -2,7 +2,7 @@ public class Client {
 	private String nom;
 	private String mail;
 	private int id_site;
-	
+
 	public Client(String nom, String mail, int id_site) {
 		this.nom = nom;
 		this.mail = mail;
@@ -33,9 +33,4 @@ public class Client {
 		this.id_site = id_site;
 	}
 
-	@Override
-	public String toString() {
-		return "Client [nom=" + nom + ", mail=" + mail + ", id_site=" + id_site + "]";
-	}
-	
 }
