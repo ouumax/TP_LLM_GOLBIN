@@ -155,8 +155,8 @@ public class Base_jdbc {
 				
 				 int dest=listeRoutes.get(i).getDestination();
 				 int origine=listeRoutes.get(i).getOrigine();
-				 Route tronçon = new Route(origine,dest);
-				 int distance = tronçon.creerDistance();
+				 Route troncon = new Route(origine,dest);
+				 int distance = troncon.creerDistance();
 
 				String requete =
 						"INSERT INTO ROUTES VALUES \r\n"
@@ -171,54 +171,6 @@ public class Base_jdbc {
 	}
 	
 	public static void main(String[] args){
-		Entreprise GOB = new Entreprise();
-		GOB.CreateSite("FichiersExcel/init-sites-30-Carre.csv");
-		GOB.CreateClient("FichiersExcel/init-clients-30-10-Carre.csv");
-		GOB.CreateRoute("FichiersExcel/init-routes-30-45-Carre.csv");
-		GOB.CreateEntrepot("FichiersExcel/init-entrepots-30-5-Carre.csv");
 		
-		Base_jdbc BD = new Base_jdbc(); 
-		
-		try {
-			BD.drop_ALL();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			BD.create_tables();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			BD.INSERT_Sites(GOB);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		try {
-			BD.INSERT_Clients(GOB);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			BD.INSERT_Entrepots(GOB);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			BD.INSERT_Routes(GOB);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
 }

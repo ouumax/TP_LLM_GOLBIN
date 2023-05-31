@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,8 +10,6 @@ import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.bean.util.OpencsvUtils;
-
-import mediatheque.Clavier;
 
 
 
@@ -28,8 +27,7 @@ public class Entreprise {
 	}
 	public  List<Client> getClients() {
 		return clients;
-	}
-		
+	}	
 	public List<Entrepot> getEntrepots() {
 		return entrepots;
 	}
@@ -70,8 +68,6 @@ public class Entreprise {
 	        	mail = row[1];
 	        	id_site = Integer.parseInt(row[2]);
 	        	this.clients.add(new Client(nom,mail,id_site));
-
-	            //System.out.println();
 	        }
 	    }
 	    catch (Exception e) {
@@ -149,10 +145,7 @@ public class Entreprise {
 	        	destination = Integer.parseInt(row[1]);
 	        	this.routes.add(new Route(origine,destination));
 	            for (String cell : row) {
-	           
-	          //      System.out.print(cell + "\t");
 	            }
-	           // System.out.println();
 	        }
 	    }
 	    catch (Exception e) {
@@ -171,20 +164,16 @@ public class Entreprise {
 	    try {
 	        // Create an object of file reader class with CSV file as a parameter.
 	        FileReader filereader = new FileReader(file);
-	  
 	        // create csvParser object with
 	        // custom separator semi-colon
 	        CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
-	  
 	        // create csvReader object with parameter
 	        // filereader and parser
 	        CSVReader csvReader = new CSVReaderBuilder(filereader)
 	                                  .withCSVParser(parser)
 	                                  .build();
-	  
 	        // Read all data at once
 	        List<String[]> allData = csvReader.readAll();
-	  
 	        // données dans la liste.
 	        for (int i=1; i<allData.size(); i++) {
 	        	String[] row = allData.get(i);
@@ -198,49 +187,42 @@ public class Entreprise {
 	        e.printStackTrace();
 	    }
 	}
-	public static int lireInt() {
-		try {
-			return Integer.parseInt(lireString().trim());
-		} catch (Exception e) {
-			return Integer.MAX_VALUE;
-		}
-	}
+
 	public static void main (String[] args){
-		
-		
-		
-		
-		
-		Entreprise GOB = new Entreprise();
-		GOB.CreateSite("FichiersExcel/init-sites-30-Carre.csv");
-		GOB.CreateClient("FichiersExcel/init-clients-30-10-Carre.csv");
-		GOB.CreateRoute("FichiersExcel/init-routes-30-45-Carre.csv");
-		GOB.CreateEntrepot("FichiersExcel/init-entrepots-30-5-Carre.csv");
 		
 		Base_jdbc BD = new Base_jdbc(); 
 		int choix;
+        String instance = "";
+		Entreprise GOB = new Entreprise();
 		do {
+			
 			System.out.println("+------------------------------------------------------+");
 			System.out.println("| Que voulez vous faire ?                              |");
-			System.out.println("| 1 : Afficher la liste des livres                     |");
-			System.out.println("| 2 : Rechercher un livre via son numero ISBN          |");
-			System.out.println("| 3 : Ajouter un livre                                 |");
-			System.out.println("| 4 : Enregistrer un nouvel abonne                     |");
-			System.out.println("| 5 : Consulter la fiche d'un abonne                   |");
-			System.out.println("| 6 : Recherche un livre via une info partielle        |");
-			System.out.println("| 7 : Enregistrer un nouvel emprunt                    |");
-			System.out.println("| 100 : Quitter                                        |");
+			System.out.println("| 1 : petite taille                     |");
+			System.out.println("| 2 : moyenne taille          |");
+			System.out.println("| 3 : grande taille                                 |");
 			System.out.println("+------------------------------------------------------+");
 			choix = Clavier.lireInt();
 			switch (choix) {
-			case 1 : System.out.println(bib.toString());break;
-			case 2 : bib.menuRechercherLivreViaISBN();break;
-			case 3 : bib.ajouterlivre();break;
-			case 4 : bib.ajouterabonne();break;
-			case 5 : bib.consulterabonne();break;
-			case 6 : bib.recherchelivreinfopartielle(); break;
+            case 1 : instance = "Petite_taille";break;
+            case 2 : instance = "Taille_moyenne";break;
+            case 3 : instance = "Un_peu_plus_grand";break;
 			}
-		try {
+			
+		} while (choix != 1 && choix !=2 && choix !=3);
+        String fichier_clients = "FichiersExcel" + File.separator + instance  + File.separator + "clients.csv";
+        String fichier_entrepots = "FichiersExcel" + File.separator + instance  + File.separator + "entrepots.csv";
+        String fichier_routes = "FichiersExcel" + File.separator + instance  + File.separator + "routes.csv";
+        String fichier_sites = "FichiersExcel" + File.separator + instance  + File.separator + "sites.csv";
+		System.out.println("fin menu :)");
+
+		
+		GOB.CreateSite(fichier_sites);
+		GOB.CreateClient(fichier_clients);
+		GOB.CreateRoute(fichier_routes);
+		GOB.CreateEntrepot(fichier_entrepots);
+		
+        try {
 			BD.drop_ALL();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -279,9 +261,6 @@ public class Entreprise {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-	}
-	
-	
+		}		
+	}	
 }

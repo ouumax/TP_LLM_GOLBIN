@@ -83,7 +83,7 @@ public class Route {
 		}
 		return 0;
 	}
-
+	
 	public int  creerDistance() throws Exception {
 		
 		distance = (int)(Math.ceil( Math.sqrt(Math.pow(appel_position_x(destination)-appel_position_x(origine),2)
