@@ -113,7 +113,7 @@ public class Entreprise {
 	    catch (Exception e) {
 	        e.printStackTrace();
 	    }
-	}
+	}	
 	public void CreateRoute(String file)
 	{
 		System.out.println("CreateRoute");
@@ -214,7 +214,7 @@ public class Entreprise {
         String fichier_entrepots = "FichiersExcel" + File.separator + instance  + File.separator + "entrepots.csv";
         String fichier_routes = "FichiersExcel" + File.separator + instance  + File.separator + "routes.csv";
         String fichier_sites = "FichiersExcel" + File.separator + instance  + File.separator + "sites.csv";
-		System.out.println("fin menu :)");
+		System.out.println("fin menu");
 
 		
 		GOB.CreateSite(fichier_sites);
