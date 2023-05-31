@@ -52,7 +52,7 @@ public class Base_jdbc {
 					+ "PRIMARY KEY(id_entrepot),FOREIGN KEY (id_site) REFERENCES sites(id_site))"
 
 
-					+"CREATE TABLE routes (origine int,destination int,taille int,PRIMARY KEY(origine,destination),\n"
+					+"CREATE TABLE routes (origine int,destination int,distance int,PRIMARY KEY(origine,destination),\n"
 					+"FOREIGN KEY (origine) REFERENCES sites(id_site),FOREIGN KEY (destination) REFERENCES sites(id_site))\n"
 					;
 			System.out.println("CREATE TABLES");
@@ -155,7 +155,8 @@ public class Base_jdbc {
 				
 				 int dest=listeRoutes.get(i).getDestination();
 				 int origine=listeRoutes.get(i).getOrigine();
-				 int distance = 0;
+				 Route tronçon = new Route(origine,dest);
+				 int distance = tronçon.creerDistance();
 
 				String requete =
 						"INSERT INTO ROUTES VALUES \r\n"
